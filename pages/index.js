@@ -35,11 +35,15 @@ export default function Table() {
     const handleSorting = (sortField, sortOrder) => {
         if (sortField) {
             const sorted = [...tableData].sort((a, b) => {
-                return (
-                    a[sortField].toString().localeCompare(b[sortField].toString(), 'en', {
-                        numeric: true,
-                    }) * (sortOrder === 'asc' ? 1 : -1)
-                );
+                if (sortField) {
+                    const aVal = sortField.split('.').reduce((obj, key) => obj[key], a);
+                    const bVal = sortField.split('.').reduce((obj, key) => obj[key], b);
+                    if (aVal < bVal) {
+                        return sortOrder === 'asc' ? -1 : 1;
+                    } if (aVal > bVal) {
+                        return sortOrder === 'asc' ? 1 : -1;
+                    }
+                } return 0;
             });
             setTableData(sorted);
         }

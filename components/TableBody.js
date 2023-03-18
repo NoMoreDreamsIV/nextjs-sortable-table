@@ -11,7 +11,7 @@ export default function TableBody({ data, handleDeleteButton }) {
                     <td contentEditable="true">{item.phone}</td>
                     <td contentEditable="true">{item.website}</td>
                     <td contentEditable="true">{item.company.name}</td>
-                    <td contentEditable="true"><button type="button" onClick={() => handleDeleteButton(item.id)}>Delete</button></td>
+                    <td><button type="button" onClick={() => handleDeleteButton(item.id)}>Delete</button></td>
                 </tr> 
             ))}
         </tbody>
