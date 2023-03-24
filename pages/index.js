@@ -6,6 +6,7 @@ import TableHead from "../components/TableHead";
 
 export default function Table() {
     const [tableData, setTableData] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/users`)
@@ -52,11 +53,11 @@ export default function Table() {
     return (
         <>
             <div className="table-container">
-                <SearchBar />
+                <SearchBar  setSearch={setSearch}/>
                 <h1>Sortable Table</h1>
                 <table className="table">
                     <TableHead columns={columns} handleSorting={handleSorting} />
-                    <TableBody data={tableData} handleDeleteButton={handleDeleteButton} />
+                    <TableBody data={tableData} handleDeleteButton={handleDeleteButton} search={search} />
                 </table>
             </div>
         </>

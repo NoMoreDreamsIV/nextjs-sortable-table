@@ -1,8 +1,10 @@
 
-export default function TableBody({ data, handleDeleteButton }) {
+export default function TableBody({ data, handleDeleteButton, search }) {
     return (
         <tbody>
-            {data.map((item, _) => (
+            {data.filter((item) => {
+                return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search)
+            }).map((item, _) => (
                 <tr key={item.id} spellCheck="false">
                     <td contentEditable="true">{item.id}</td>
                     <td contentEditable="true">{item.name}</td>

@@ -46,8 +46,13 @@ body {
     background: #fff;
 }
 
-.search-bar {
-    margin: 20px;
+.search-bar input {
+    padding: 4px 12px;
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 2px 1px 1px 1px rgb(82, 243, 255);
 }
 
 button {
